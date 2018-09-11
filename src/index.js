@@ -44,12 +44,21 @@ class SmartCalculator {
         if(this.value[j]==zn)
         {
         if(this.value[j]=='pow')
-         {
-          this.value[j] = Math.pow(this.value[j-1],this.value[j+1]);
-          this.value.splice(j+1, 1);
-          this.value.splice(j-1, 1);
-          j = 0;
+         {var ii=j;
+           //for (var k=this.op.length-1;k>=0;k--){
+            // if (this.value[k]=='pow'){
+          //this.value[k] = Math.pow(this.value[k-1],this.value[k+1]);
+         // this.value.splice(k+1, 1);
+         // this.value.splice(k-1, 1);
+         // j = 0;k=this.op.length-1;
+        for (var k=j;k<this.value.length;k++){
+          if(this.value[k]=='pow') ii=k;
         }
+        this.value[ii] = Math.pow(this.value[ii-1],this.value[ii+1]);
+          this.value.splice(ii+1, 1);
+         this.value.splice(ii-1, 1);
+         j = 0;
+        }//}}
         if(this.value[j]=='*')
         {
           this.value[j] = this.value[j+1]*this.value[j-1];
